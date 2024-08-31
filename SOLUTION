@@ -1,26 +1,43 @@
 Local DNS Server IP
 -------------------
-<ip-here>
+127.0.0.53
 
 
 
 Default gateway IP
 -------------------
-<ip-here>
+10.0.0.1
 
 
 
 DHCP IP allocation sys-logs
 -------------------
-<logs-here>
+2024-08-31T11:38:32.129286+00:00 ip-10-0-0-199 dhcpcd[431]: dhcpcd-10.0.6 starting
+2024-08-31T11:38:32.129290+00:00 ip-10-0-0-199 dhcpcd[434]: DUID 00:01:00:01:2e:65:bd:30:06:b6:66:05:2a:f3
+2024-08-31T11:38:32.129294+00:00 ip-10-0-0-199 dhcpcd[434]: enX0: IAID 66:05:2a:f3
+2024-08-31T11:38:32.129298+00:00 ip-10-0-0-199 dhcpcd[434]: enX0: soliciting a DHCP lease
+2024-08-31T11:38:32.129304+00:00 ip-10-0-0-199 dhcpcd[434]: enX0: offered 10.0.0.199 from 10.0.0.1
+2024-08-31T11:38:32.129308+00:00 ip-10-0-0-199 dhcpcd[434]: enX0: leased 10.0.0.199 for 3600 seconds
+2024-08-31T11:38:32.129312+00:00 ip-10-0-0-199 dhcpcd[434]: enX0: adding route to 10.0.0.0/24
+2024-08-31T11:38:32.129315+00:00 ip-10-0-0-199 dhcpcd[434]: enX0: adding default route via 10.0.0.1
+2024-08-31T11:38:32.129319+00:00 ip-10-0-0-199 dhcpcd[434]: control command: /usr/sbin/dhcpcd --dumplease --ipv4only enX0
+2024-08-31T11:38:32.129440+00:00 ip-10-0-0-199 systemd-networkd[498]: enX0: DHCPv4 address 10.0.0.199/24, gateway 10.0.0.1 acquired from 10.0.0.1
 
 
 
 Public to private num of hops
 -------------------
-<answer-here>
+1
+The public and private instances in the same VPC (Virtual Private Cloud) and within the same subnet. In this case, the public instance communicates directly with the private instance without any intermediary network devices like routers.
 
 
 DNS queries from the private instance
 -------------------
-<answer-here>
+ubuntu@ip-10-0-1-94:~$ nslookup ip-10-0-0-199
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	ip-10-0-0-199.eu-west-1.compute.internal
+Address: 10.0.0.199
+
