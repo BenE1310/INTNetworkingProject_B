@@ -7,6 +7,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+#
 PRIVATE_INSTANCE_IP="$1"
 
 # Paths to old and new keys
