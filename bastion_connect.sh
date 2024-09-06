@@ -1,5 +1,4 @@
 #!/bin/bash
-#
 
 # Check if the KEY_PATH environment variable is set
 if [ -z "$KEY_PATH" ]; then
