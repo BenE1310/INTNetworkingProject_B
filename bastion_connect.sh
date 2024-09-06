@@ -6,6 +6,7 @@ if [ -z "$KEY_PATH" ]; then
     exit 5
 fi
 
+
 # Check if at least one argument is provided (public instance IP)
 if [ $# -lt 1 ]; then
     echo "Please provide bastion IP address"
