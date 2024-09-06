@@ -11,7 +11,7 @@ if [ $# -lt 1 ]; then
     echo "Please provide bastion IP address"
     exit 5
 fi
-#
+
 # Assign variables based on provided arguments
 PUBLIC_IP=$1
 PRIVATE_IP=$2
