@@ -75,7 +75,7 @@ echo "Command: bastion_connect.sh $PUBLIC_IP $PRIVATE_IP printenv"
 echo -e "-----------------------------------------------------------------------------------------------------------------"
 
 export KEY_PATH=$(pwd)/private_key
-OUTPUT=$(bash bastion_connect.sh $PUBLIC_IP $PRIVATE_IP printenv)
+OUTPUT=$(bash -x bastion_connect.sh $PUBLIC_IP $PRIVATE_IP printenv)
 
 if [ $? -ne "0" ]
 then
