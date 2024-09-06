@@ -71,12 +71,13 @@ echo '✅ Test case III was completed successfully!'
 echo -e "\n\n\n-----------------------------------------------------------------------------------------------------------------"
 echo "Running Test Case IV: Connect to the private instance through the public instance and execute the"
 echo "                      'printenv' command (which prints the env vars exist in the private instance)."
-echo "Command: bastion_connect.sh $PUBLIC_IP $PRIVATE_IP printenv"
+echo "Command: bastion_connect.sh $PUBLIC_IP $PRIVATE_IP printenvvvv"
 echo -e "-----------------------------------------------------------------------------------------------------------------"
 
 
 export KEY_PATH=$(pwd)/private_key
-OUTPUT=$(bash -x bastion_connect.sh $PUBLIC_IP $PRIVATE_IP printenv)
+# OUTPUT=$(bash -x bastion_connect.sh $PUBLIC_IP $PRIVATE_IP printenv)
+OUTPUT=$(bash -x bastion_connect.sh $PUBLIC_IP)
 
 if [ $? -ne "0" ]
 then
