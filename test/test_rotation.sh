@@ -33,3 +33,4 @@ while read -r old_key; do
 done <<< "$OLD_KEYS"
 
 echo '✅ Rotation done successfully!'
+echo ""
