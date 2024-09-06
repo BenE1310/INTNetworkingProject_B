@@ -13,6 +13,9 @@ PRIVATE_INSTANCE_IP="$1"
 # Paths to old and new keys
 OLD_KEY_PATH=~/.ssh/id_rsa
 NEW_KEY_PATH=~/.ssh/id_rsa_new
+GIT_KEY_PATH=/home/ben/DevOps/INTNetworkingProject_B\github_test_ssh_key.pub
+
+
 
 # Generate new SSH key pair
 ssh-keygen -t rsa -b 4096 -f $NEW_KEY_PATH -N ""
@@ -25,6 +28,10 @@ ssh -i $OLD_KEY_PATH ubuntu@$PRIVATE_INSTANCE_IP "mkdir -p ~/.ssh && echo $(cat 
 OLD_PUBLIC_KEY=$(cat $OLD_KEY_PATH.pub)
 CLEAR_OLD_KEY=$(echo "$OLD_PUBLIC_KEY" | sed 's/[\/&]/\\&/g')
 ssh -i $NEW_KEY_PATH ubuntu@$PRIVATE_INSTANCE_IP "sed -i '/$CLEAR_OLD_KEY/d' ~/.ssh/authorized_keys"
+
+OLD_PUBLIC_GIT_KEY=$(cat $GIT_KEY_PATH.pub)
+CLEAR_OLD_GIT_KEY=$(echo "$OLD_PUBLIC_GIT_KEY" | sed 's/[\/&]/\\&/g')
+ssh -i $NEW_KEY_PATH ubuntu@$PRIVATE_INSTANCE_IP "sed -i '/$CLEAR_OLD_GIT_KEY/d' ~/.ssh/authorized_keys"
 
 # Clean up old key if necessary (optional, usually done after verifying access with the new key)
 rm -f $OLD_KEY_PATH $OLD_KEY_PATH.pub
