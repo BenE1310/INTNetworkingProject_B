@@ -11,7 +11,7 @@ if [ $# -lt 1 ]; then
     echo "Please provide bastion IP address"
     exit 5
 fi
-#
+
 # Assign variables based on provided arguments
 PUBLIC_IP=$1
 PRIVATE_IP=$2
@@ -22,13 +22,5 @@ if [ -z "$PRIVATE_IP" ]; then
     # Connect to the public instance (bastion host)
     ssh -i "$KEY_PATH" ubuntu@"$PUBLIC_IP"
 else
-    # Connect to the private instance through the bastion host
-    if [ -z "$REMOTE_COMMAND" ]; then
-        # If no command is provided, establish an interactive SSH session
-        ssh -i "$KEY_PATH" -o ProxyCommand="ssh -i $KEY_PATH -W %h:%p ubuntu@$PUBLIC_IP" ubuntu@$PRIVATE_IP
-    else
-        # If a command is provided, execute it on the private instance
-        ssh -i "$KEY_PATH" -o ProxyCommand="ssh -i $KEY_PATH -W %h:%p ubuntu@$PUBLIC_IP" ubuntu@$PRIVATE_IP "$REMOTE_COMMAND"
-    fi
+    ssh -i "$KEY_PATH" -o ProxyCommand="ssh -i $KEY_PATH -W %h:%p ubuntu@$PUBLIC_IP" ubuntu@$PRIVATE_IP "$REMOTE_COMMAND"
 fi
-
