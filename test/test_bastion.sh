@@ -74,6 +74,7 @@ echo "                      'printenv' command (which prints the env vars exist 
 echo "Command: bastion_connect.sh $PUBLIC_IP $PRIVATE_IP printenv"
 echo -e "-----------------------------------------------------------------------------------------------------------------"
 
+
 export KEY_PATH=$(pwd)/private_key
 OUTPUT=$(bash -x bastion_connect.sh $PUBLIC_IP $PRIVATE_IP printenv)
 
