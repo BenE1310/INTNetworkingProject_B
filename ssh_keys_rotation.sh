@@ -33,6 +33,7 @@ ssh -i $NEW_KEY_PATH ubuntu@$PRIVATE_INSTANCE_IP "sed -i '/$CLEAR_OLD_KEY/d' ~/.
 
 
 
+
 # Clean up old key if necessary (optional, usually done after verifying access with the new key)
 rm -f $OLD_KEY_PATH $OLD_KEY_PATH.pub
 
