@@ -23,5 +23,6 @@ if [ -z "$PRIVATE_IP" ]; then
     # Connect to the public instance (bastion host)
     ssh -i "$KEY_PATH" ubuntu@"$PUBLIC_IP"
 else
-    ssh -i "$KEY_PATH" -o ProxyCommand="ssh -i $KEY_PATH -W %h:%p ubuntu@$PUBLIC_IP" ubuntu@$PRIVATE_IP "$REMOTE_COMMAND"
+    # ssh -i "$KEY_PATH" -o ProxyCommand="ssh -i $KEY_PATH -W %h:%p ubuntu@$PUBLIC_IP" ubuntu@$PRIVATE_IP "$REMOTE_COMMAND"
+    ssh -i "$KEY_PATH" ubuntu@"$PUBLIC_IP" "ssh -i /home/ubuntu/.ssh/id_rsa ubuntu@$PRIVATE_IP $REMOTE_COMMAND"
 fi
